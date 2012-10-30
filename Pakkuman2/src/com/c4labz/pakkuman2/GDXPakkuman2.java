@@ -9,12 +9,14 @@ import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.c4labz.pakkuman2.stage.PacMan;
 
 public class GDXPakkuman2 implements ApplicationListener {
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
 	private Texture texture;
 	private Sprite sprite;
+	private Sprite sprite2;
 	
 	@Override
 	public void create() {		
@@ -33,6 +35,13 @@ public class GDXPakkuman2 implements ApplicationListener {
 		sprite.setSize(0.9f, 0.9f * sprite.getHeight() / sprite.getWidth());
 		sprite.setOrigin(sprite.getWidth()/2, sprite.getHeight()/2);
 		sprite.setPosition(-sprite.getWidth()/2, -sprite.getHeight()/2);
+		
+		
+		PacMan pacman = new PacMan(1,1);
+		sprite2.setSize(.9f,.9f*sprite.getHeight() / sprite.getWidth());
+		sprite2 = new Sprite(pacman.getTexture());
+		sprite2.setOrigin(20,20);
+		sprite2.setPosition(0,0);
 	}
 
 	@Override
@@ -49,6 +58,7 @@ public class GDXPakkuman2 implements ApplicationListener {
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
 		sprite.draw(batch);
+		sprite2.draw(batch);
 		batch.end();
 	}
 
